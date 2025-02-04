@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+	*{
+    padding: 0%;
+    margin: 0%;
+}
+body{
+    height: 100vh;
+    background: linear-gradient(135deg, #fbff00,#ff6161);
+}
+.animation{
+    height: 8px;
+    width: 15px;
+    position: relative;
+    animation: sushil 10s linear 0s infinite  none;
+    background: linear-gradient(120deg, #063907, #24065b);
+    margin-top: 110px;
+}
+@keyframes sushil {
+    0%{
+        top: 0%;
+        left: 26%;
+    }
+    25%{
+        top: 60%;
+        left: 26%;
+    }
+    50%{
+        top: 61%;
+        left: 73%;
+    }
+    75%{
+        top: 0%;
+        left: 73%;
+    }
+    100%{
+        top: 0%;
+        left: 26%;
+    }
+    
+}
+.maindiv{
+    border: 2px solid rgb(236, 34, 34);
+    width: 40%;
+    min-width: 450px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    padding: 30px 40px;
+    transition: all 3s linear 0s;
+}
+.maindiv:hover{
+    background-color: #ff0000;
+}
+#a1{
+    background: linear-gradient(135deg, #766e74,#e8d0a6);
+    padding: 30px 40px;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+#a1 input{
+    width: 70%;
+    height: 15px;
+    padding: 12px;
+    border: 2px solid #d1d3d4;
+    color: #111111;
+    position: relative;
+}
+#a1 input:focus{
+    outline: none;
+    border-color: #8052ec;
+}
+#btn{
+    position: relative;
+    width: 20%;
+    height: 39px;
+    border-radius: 5px;
+    float: right;
+    cursor: pointer;
+    background-color: darkgray;
+}
+#tasks{
+    background: linear-gradient(135deg, #ff6666,#ffc45f);
+    padding: 30px 40px;
+    position: relative;
+    border-radius: 60px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    margin: 60px;
+    width: 85%;
+    left: -12%;
+}
+.task{
+    padding: 5px 5px ;
+    height: 20px;
+	cursor: pointer;
+    margin-top: 2px;
+    display: flex;
+    border-bottom: 2px solid wheat;
+    align-items: center;
+    justify-content:space-between;
+	background: linear-gradient(135deg, #766e74,#e8d0a6);
+    color: #ffffff;
+}
+.task span{
+    font-size: 20px;
+    font-weight: 100px;
+}
+.task button{
+    background-color: #8052ec;
+    color: #ffffff;
+    height: 30px;
+    width: 40px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.completed{
+    text-decoration: line-through;
+}
+</style>
+    <title>project 3</title>
+</head>
+<body>
+    <div class="animation"></div>
+    <div class="maindiv">
+        <div id="a1">
+            <input type="text" class="input" placeholder="task to be complete.....">
+            <button id="btn" onclick="btnn()">ADD</button>
+        </div>
+        <div id="tasks">
+
+        </div>
+    </div>
+    <script>
+let btn=document.querySelector('#btn');
+let input = document.querySelector('.input');
+function btnn(){
+if(input.value.length ==0){
+    alert("please enter the task what will be added in to the system........")
+}
+else{
+    document.querySelector('#tasks').innerHTML 
+    +=`
+    <div class="task">
+    <span id="name">
+        ${document.querySelector('#a1 input').value}
+    </span>
+	    <button class="delete">
+        <i>&times;</i>
+    </button>
+    </div>
+    `;
+}
+document.querySelector('#a1 input').value='';
+let deletebtn = document.querySelectorAll('.delete');
+for(let i=0; i<deletebtn.length; i++){
+    deletebtn[i].onclick = function delebtn(){
+        this.parentNode.remove();
+    }
+}
+let taskss = document.querySelectorAll('.task');
+for(let i=0; i<taskss.length; i++){
+    taskss[i].onclick = function (){
+        this.classList.toggle('completed');
+    }
+}
+    }
+
+
+	</script>
+</body>
+</html>
